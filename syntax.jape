@@ -1,0 +1,55 @@
+Phase:firstpass
+Input: Lookup
+Options: control = brill
+
+
+Rule: CountryR
+Priority: 20
+(
+{Lookup.minorType == "country"}
+):country
+-->
+:country.Country ={rule= "CountryR" }
+
+
+Rule: LocationR
+Priority: 20
+(
+{Lookup.minorType == "location"}
+):location
+-->
+:location.Location ={rule= "LocationR" }
+
+
+Rule: OrganizationR
+Priority: 30
+(
+{Lookup.majorType == "organization"}
+):organization
+-->
+:organization.Organization = {rule= "OrganizationR" } 
+
+
+Rule: CityR
+Priority: 40
+(
+{Lookup.minorType == "city"}
+):city
+-->
+:city.City = {rule= "CityR" }
+
+
+
+Rule: PersonR
+Priority: 40
+(
+{Lookup.majorType == "person_full"}
+):person_full
+-->
+:person_full.Person_full = {rule= "PersonR" }
+
+
+
+
+
+
